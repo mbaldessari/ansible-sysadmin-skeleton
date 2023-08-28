@@ -1,1 +1,14 @@
+{% macro ips(addresses) %}
+{% for i in addresses %}
+    {% if i.startswith('10') %}
+      privateinterface10 {{ i }}
+    {% else %}
+      interface {{ i }}
+    {% endif %}
+{% endfor %}
+{% endmacro %}
+
 HELLO: "{{ foo }}"
+
+IPS:
+  {{ ips(ip_addresses) }}

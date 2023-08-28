@@ -2,3 +2,7 @@
 base_dir: "{{ playbook_dir | dirname }}"
 template_dir: "{{ base_dir }}/templates"
 foo: "BAZ"
+
+ip_addresses:
+  - 192.168.1.1/24
+  - 10.0.0.254/8
