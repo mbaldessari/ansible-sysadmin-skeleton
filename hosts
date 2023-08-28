@@ -1,0 +1,2 @@
+[test]
+foo.int.lab ansible_user=root

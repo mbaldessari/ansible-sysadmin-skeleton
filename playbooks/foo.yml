@@ -1,0 +1,20 @@
+---
+- name: Install foo
+  hosts: localhost
+  connection: local
+  gather_facts: false
+  become: true
+  tasks:
+    - name: Debug
+      ansible.builtin.debug:
+        msg: "{{ inventory_hostname }} -> {{ playbook_dir | dirname }} -> {{ template_dir }}"
+
+    - name: Template example
+      ansible.builtin.template:
+        src: "{{ template_dir }}/hello.yaml"
+        dest: /tmp/hello.yaml
+        mode: "0644"
+
+    - name: Hello Role
+      ansible.builtin.include_role:
+        name: hello

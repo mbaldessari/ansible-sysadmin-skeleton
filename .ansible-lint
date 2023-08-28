@@ -1,0 +1,12 @@
+# Vim filetype=yaml
+---
+skip_list:
+  # - no-changed-when
+  # - no-relative-paths
+  # - latest
+  # - var-naming
+  # - yaml
+  - meta-no-info
+
+exclude_paths:
+  - .github/

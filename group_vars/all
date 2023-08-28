@@ -1,0 +1,4 @@
+---
+base_dir: "{{ playbook_dir | dirname }}"
+template_dir: "{{ base_dir }}/templates"
+foo: "BAZ"
