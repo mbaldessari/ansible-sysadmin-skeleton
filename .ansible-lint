@@ -1,12 +1,14 @@
-# Vim filetype=yaml
+# vim: filetype=yaml
 ---
 skip_list:
-  # - no-changed-when
-  # - no-relative-paths
-  # - latest
-  # - var-naming
-  # - yaml
+  # Role metadata does not contain full galaxy info (author, platforms, etc.)
   - meta-no-info
+
+# warn_list:
+#   - no-changed-when  # Tasks that change state should use changed_when
+#   - no-relative-paths  # Avoid relative paths in tasks
+#   - latest  # Package installs should not use state=latest
 
 exclude_paths:
   - .github/
+  - vault_vars/

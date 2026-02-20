@@ -1,6 +1,10 @@
 ---
 base_dir: "{{ playbook_dir | dirname }}"
 template_dir: "{{ base_dir }}/templates"
+
+# Connection defaults
+ansible_user: root
+
 foo: "BAZ"
 
 ip_addresses:

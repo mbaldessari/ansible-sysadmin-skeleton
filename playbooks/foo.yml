@@ -3,7 +3,6 @@
   hosts: localhost
   connection: local
   gather_facts: false
-  become: true
   tasks:
     - name: Debug
       ansible.builtin.debug:
@@ -14,6 +13,7 @@
         src: "{{ template_dir }}/hello.yaml"
         dest: /tmp/hello.yaml
         mode: "0644"
+      become: true
 
     - name: Hello Role
       ansible.builtin.include_role:

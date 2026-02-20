@@ -1,15 +1,35 @@
+---
 name: Ansible Lint
 
-on: push
+on: push  # yamllint disable-line rule:truthy
 
 jobs:
-  build:
+  lint:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
 
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Install dependencies
+        run: |
+          pip install ansible-lint==25.* yamllint
+
       - name: Install collections
         run: ansible-galaxy collection install -r requirements.yml
 
-      - name: Lint Ansible Playbook
-        uses: ansible/ansible-lint-action@v6
+      - name: Run yamllint
+        run: yamllint .
+
+      - name: Run ansible-lint
+        run: ansible-lint -v
+
+      - name: Syntax check playbooks
+        run: |
+          for pb in playbooks/*.yml; do
+            echo "Checking $pb..."
+            ansible-playbook --syntax-check "$pb"
+          done
